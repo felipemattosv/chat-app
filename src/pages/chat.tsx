@@ -6,7 +6,9 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { NextPage } from 'next';
 
 import { ChatHeader } from '../components/ChatHeader';
+import { ImageInput } from '../components/ImageInput';
 import MessagesList from '../components/MessagesList';
+import { TextInput } from '../components/TextInput';
 import { auth } from '../services/firebase-config';
 
 const Chat: NextPage = () => {
@@ -21,6 +23,10 @@ const Chat: NextPage = () => {
       <MessagesList>
         <p>Messages map here</p>
       </MessagesList>
+      <Flex w="80vw">
+        <TextInput />
+        <ImageInput />
+      </Flex>
     </Flex>
   );
 };
