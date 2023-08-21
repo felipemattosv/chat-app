@@ -24,8 +24,8 @@ const Chat: NextPage = () => {
         <p>Messages map here</p>
       </MessagesList>
       <Flex w="80vw">
-        <TextInput />
-        <ImageInput />
+        <TextInput userEmail={userEmail} />
+        <ImageInput userEmail={userEmail} />
       </Flex>
     </Flex>
   );

@@ -1,4 +1,5 @@
 /* eslint-disable react/no-children-prop */
+import { useState, KeyboardEvent } from 'react';
 import { RiSendPlaneFill } from 'react-icons/ri';
 import { TbMessageCircle } from 'react-icons/tb';
 
@@ -10,7 +11,27 @@ import {
   IconButton,
 } from '@chakra-ui/react';
 
-export function TextInput() {
+import { useMessages } from '../hooks/useMessages';
+
+interface TextInputProps {
+  userEmail: string;
+}
+
+export function TextInput({ userEmail }: TextInputProps) {
+  const [newMessageContent, setNewMessageContent] = useState('');
+  const { createTextMessage } = useMessages();
+
+  function handleSendTextMessage() {
+    createTextMessage(userEmail, newMessageContent);
+    setNewMessageContent('');
+  }
+
+  function handleEnterPress(e: KeyboardEvent) {
+    if (e.code === 'Enter' && newMessageContent !== '') {
+      handleSendTextMessage();
+    }
+  }
+
   return (
     <InputGroup w="80vw" bg="#0E1013" h="2.5rem">
       <InputLeftElement
@@ -24,6 +45,9 @@ export function TextInput() {
         borderRadius={0}
         bg="#0E1013"
         _hover={{ bg: '#282A2D', opacity: '0.7' }}
+        value={newMessageContent}
+        onChange={(e) => setNewMessageContent(e.target.value)}
+        onKeyUp={(e) => handleEnterPress(e)}
       />
       <IconButton
         aria-label="Send Message"
@@ -31,6 +55,7 @@ export function TextInput() {
         bg="#0E1013"
         color="white"
         _hover={{ bg: '#8800C7' }}
+        onClick={() => handleSendTextMessage()}
       />
     </InputGroup>
   );

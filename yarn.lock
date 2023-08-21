@@ -3986,6 +3986,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"immer@npm:^9.0.16":
+  version: 9.0.21
+  resolution: "immer@npm:9.0.21"
+  checksum: 70e3c274165995352f6936695f0ef4723c52c92c92dd0e9afdfe008175af39fa28e76aafb3a2ca9d57d1fb8f796efc4dd1e1cc36f18d33fa5b74f3dfb0375432
+  languageName: node
+  linkType: hard
+
 "import-fresh@npm:^3.0.0, import-fresh@npm:^3.2.1":
   version: 3.3.0
   resolution: "import-fresh@npm:3.3.0"
@@ -4552,6 +4559,7 @@ __metadata:
     framer-motion: ^10.9.1
     next: ^13.2.4
     prettier: 2.8.7
+    pullstate: ^1.25.0
     react: ^18.2.0
     react-dom: ^18.2.0
     react-icons: ^4.10.1
@@ -4963,6 +4971,18 @@ __metadata:
     "@types/node": ">=13.7.0"
     long: ^5.0.0
   checksum: a952cdf2a5e5250c16ae651b570849b6f5b20a5475c3eef63ffb290ad239aa2916adfc1cc676f7fc93c69f48113df268761c0c246f7f023118c85bdd1a170044
+  languageName: node
+  linkType: hard
+
+"pullstate@npm:^1.25.0":
+  version: 1.25.0
+  resolution: "pullstate@npm:1.25.0"
+  dependencies:
+    fast-deep-equal: ^3.1.3
+    immer: ^9.0.16
+  peerDependencies:
+    react: ^16.12.0 || ^17.0.0 || ^18.0.0
+  checksum: 9a5518077c4b4db736fc456fcb46f68d43f18822e005e5a5edcbcdf34dd3b81d0d302c8021c4a15bc95015e23758a7a3960ed2ba64246589b4d3656a03d773b5
   languageName: node
   linkType: hard
 
