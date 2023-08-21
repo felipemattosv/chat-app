@@ -6,6 +6,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { NextPage } from 'next';
 
 import { ChatHeader } from '../components/ChatHeader';
+import MessagesList from '../components/MessagesList';
 import { auth } from '../services/firebase-config';
 
 const Chat: NextPage = () => {
@@ -17,6 +18,9 @@ const Chat: NextPage = () => {
   return (
     <Flex justify="center" align="center" h="100vh" w="100vw" flexDir="column">
       <ChatHeader userEmail={userEmail} />
+      <MessagesList>
+        <p>Messages map here</p>
+      </MessagesList>
     </Flex>
   );
 };
