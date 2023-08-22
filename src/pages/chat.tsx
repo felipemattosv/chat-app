@@ -7,8 +7,10 @@ import { NextPage } from 'next';
 
 import { ChatHeader } from '../components/ChatHeader';
 import { ImageInput } from '../components/ImageInput';
+import { ImageMessage } from '../components/ImageMessage';
 import MessagesList from '../components/MessagesList';
 import { TextInput } from '../components/TextInput';
+import { TextMessage } from '../components/TextMessage';
 import { auth } from '../services/firebase-config';
 
 const Chat: NextPage = () => {
@@ -21,7 +23,8 @@ const Chat: NextPage = () => {
     <Flex justify="center" align="center" h="100vh" w="100vw" flexDir="column">
       <ChatHeader userEmail={userEmail} />
       <MessagesList>
-        <p>Messages map here</p>
+        <TextMessage />
+        <ImageMessage />
       </MessagesList>
       <Flex w="80vw">
         <TextInput userEmail={userEmail} />
