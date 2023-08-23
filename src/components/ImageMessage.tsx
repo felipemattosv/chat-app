@@ -59,16 +59,19 @@ export function ImageMessage({
         flexDir="column"
       >
         <Image src={content} boxSize="8rem" />
-        <Flex justify="right">
-          <IconButton
-            aria-label="Delete Message"
-            icon={<DeleteIcon />}
-            bg={userIsAuthor ? '#0E1013' : '#8800C7'}
-            color="white"
-            size="sm"
-            _hover={{ opacity: '0.5' }}
-          />
-        </Flex>
+        {userIsAuthor ? (
+          <Flex justify="right">
+            <IconButton
+              aria-label="Delete Message"
+              icon={<DeleteIcon />}
+              bg={userIsAuthor ? '#0E1013' : '#8800C7'}
+              color="white"
+              ml="0.75rem"
+              size="sm"
+              _hover={{ opacity: '0.5' }}
+            />
+          </Flex>
+        ) : null}
       </Flex>
     </Flex>
   );
