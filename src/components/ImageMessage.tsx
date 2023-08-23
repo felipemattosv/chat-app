@@ -1,4 +1,5 @@
-import { Flex, Text, HStack, Image } from '@chakra-ui/react';
+import { DeleteIcon } from '@chakra-ui/icons';
+import { Flex, Text, HStack, Image, IconButton } from '@chakra-ui/react';
 
 interface ImageMessageProps {
   userEmail: string;
@@ -55,8 +56,19 @@ export function ImageMessage({
         }
         border="0.1rem solid black"
         p="1rem"
+        flexDir="column"
       >
         <Image src={content} boxSize="8rem" />
+        <Flex justify="right">
+          <IconButton
+            aria-label="Delete Message"
+            icon={<DeleteIcon />}
+            bg={userIsAuthor ? '#0E1013' : '#8800C7'}
+            color="white"
+            size="sm"
+            _hover={{ opacity: '0.5' }}
+          />
+        </Flex>
       </Flex>
     </Flex>
   );

@@ -1,4 +1,5 @@
-import { Flex, Text, HStack } from '@chakra-ui/react';
+import { EditIcon, DeleteIcon } from '@chakra-ui/icons';
+import { Flex, Text, HStack, IconButton } from '@chakra-ui/react';
 
 interface TextMessageProps {
   userEmail: string;
@@ -55,10 +56,30 @@ export function TextMessage({
         }
         border="0.1rem solid black"
         p="1rem"
+        flexDir="column"
       >
         <Text color="white" fontSize="1rem" wordBreak="break-word">
           {content}
         </Text>
+        <Flex justify="right">
+          <IconButton
+            aria-label="Edit Message"
+            icon={<EditIcon />}
+            bg={userIsAuthor ? '#0E1013' : '#8800C7'}
+            color="white"
+            size="sm"
+            _hover={{ opacity: '0.5' }}
+          />
+          <IconButton
+            aria-label="Delete Message"
+            icon={<DeleteIcon />}
+            bg={userIsAuthor ? '#0E1013' : '#8800C7'}
+            color="white"
+            ml="0.75rem"
+            size="sm"
+            _hover={{ opacity: '0.5' }}
+          />
+        </Flex>
       </Flex>
     </Flex>
   );
