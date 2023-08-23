@@ -1,9 +1,36 @@
 import { Flex, Text, HStack, Image } from '@chakra-ui/react';
 
-export function ImageMessage() {
-  const userIsAuthor = true;
+interface ImageMessageProps {
+  userEmail: string;
+  authorEmail: string;
+  content: string;
+  createdAt: number;
+}
+
+export function ImageMessage({
+  userEmail,
+  authorEmail,
+  content,
+  createdAt,
+}: ImageMessageProps) {
+  const userIsAuthor: boolean = userEmail === authorEmail;
+  const authorUsername: string = authorEmail.substring(
+    0,
+    authorEmail.indexOf('@')
+  );
+  const sendDate = new Date(createdAt);
+  const sendDateFormatted = sendDate.toLocaleDateString('en-US', {
+    year: '2-digit',
+    month: '2-digit',
+    day: '2-digit',
+    hour12: false,
+    hour: '2-digit',
+    minute: '2-digit',
+  });
 
   return (
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     <Flex
       w="25vw"
       mt="1.8rem"
@@ -14,10 +41,11 @@ export function ImageMessage() {
     >
       <HStack ml={userIsAuthor ? '11vw' : '0.5vw'} mb="0.75vh">
         <Text color="white" fontSize="1.6vw" as="b">
-          {userIsAuthor ? '' : 'authorUsername'}
+          {userIsAuthor ? '' : authorUsername}
         </Text>
-        <Text color="white" mt="0.25rem" fontSize="1.3vw">
-          {userIsAuthor ? '' : ' | '}Date
+        <Text color="white" mt="0.25rem" fontSize="0.8vw">
+          {userIsAuthor ? '' : ' '}
+          {sendDateFormatted}
         </Text>
       </HStack>
       <Flex
@@ -28,7 +56,7 @@ export function ImageMessage() {
         border="0.1rem solid black"
         p="1rem"
       >
-        <Image src="https://placehold.co/600x400" boxSize="8rem" />
+        <Image src={content} boxSize="8rem" />
       </Flex>
     </Flex>
   );
