@@ -1,7 +1,10 @@
 import { EditIcon, DeleteIcon } from '@chakra-ui/icons';
 import { Flex, Text, HStack, IconButton } from '@chakra-ui/react';
 
+import { useMessages } from '../hooks/useMessages';
+
 interface TextMessageProps {
+  id: string;
   userEmail: string;
   authorEmail: string;
   content: string;
@@ -9,6 +12,7 @@ interface TextMessageProps {
 }
 
 export function TextMessage({
+  id,
   userEmail,
   authorEmail,
   content,
@@ -28,6 +32,12 @@ export function TextMessage({
     hour: '2-digit',
     minute: '2-digit',
   });
+
+  const { deleteMessage } = useMessages();
+
+  function handleDeleteMessage() {
+    deleteMessage(id);
+  }
 
   return (
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -79,6 +89,7 @@ export function TextMessage({
               ml="0.75rem"
               size="sm"
               _hover={{ opacity: '0.5' }}
+              onClick={() => handleDeleteMessage()}
             />
           </Flex>
         ) : null}

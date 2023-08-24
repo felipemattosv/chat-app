@@ -31,6 +31,7 @@ const Chat: NextPage = () => {
           message.type === 'text' ? (
             <TextMessage
               key={message.id}
+              id={message.id}
               userEmail={userEmail}
               authorEmail={message.authorEmail}
               content={message.content}
@@ -39,6 +40,7 @@ const Chat: NextPage = () => {
           ) : (
             <ImageMessage
               key={message.id}
+              id={message.id}
               userEmail={userEmail}
               authorEmail={message.authorEmail}
               content={message.content}

@@ -1,6 +1,12 @@
 /* eslint-disable object-shorthand */
 /* eslint-disable no-param-reassign */
-import { collection, addDoc, onSnapshot } from 'firebase/firestore';
+import {
+  collection,
+  addDoc,
+  onSnapshot,
+  doc,
+  deleteDoc,
+} from 'firebase/firestore';
 
 import { MessagesStore as store } from '.';
 import { db } from '../../services/firebase-config';
@@ -12,10 +18,17 @@ const messagesCollectionRef = collection(db, 'messages');
 onSnapshot(messagesCollectionRef, (snapshot) => {
   snapshot.docChanges().forEach((change) => {
     if (change.type === 'added') {
-      const newMessages = snapshot.docs.map((doc) => doc.data() as Message);
+      const newMessages = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      })) as Message[];
 
       store.update((s) => {
         s.messages = newMessages.sort((a, b) => a.createdAt - b.createdAt);
+      });
+    } else if (change.type === 'removed') {
+      store.update((s) => {
+        s.messages = s.messages.filter((m) => m.id !== change.doc.id);
       });
     }
   });
@@ -40,6 +53,11 @@ export async function createImageMessage(
     createdAt: new Date().getTime(),
     type: 'image',
   });
+}
+
+export async function deleteMessage(messageId: string) {
+  const docRef = doc(db, 'messages', messageId);
+  await deleteDoc(docRef);
 }
 
 export function clearStore() {
