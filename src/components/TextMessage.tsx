@@ -1,7 +1,13 @@
 import { EditIcon, DeleteIcon } from '@chakra-ui/icons';
-import { Flex, Text, HStack, IconButton } from '@chakra-ui/react';
+import {
+  Flex,
+  Text,
+  HStack,
+  IconButton,
+  useDisclosure,
+} from '@chakra-ui/react';
 
-import { useMessages } from '../hooks/useMessages';
+import { ModalDeleteMessage } from './ModalDeleteMessage';
 
 interface TextMessageProps {
   id: string;
@@ -33,10 +39,10 @@ export function TextMessage({
     minute: '2-digit',
   });
 
-  const { deleteMessage } = useMessages();
+  const modalDeleteDisclosure = useDisclosure();
 
   function handleDeleteMessage() {
-    deleteMessage(id);
+    modalDeleteDisclosure.onOpen();
   }
 
   return (
@@ -94,6 +100,11 @@ export function TextMessage({
           </Flex>
         ) : null}
       </Flex>
+      <ModalDeleteMessage
+        isOpen={modalDeleteDisclosure.isOpen}
+        onClose={modalDeleteDisclosure.onClose}
+        messageId={id}
+      />
     </Flex>
   );
 }
