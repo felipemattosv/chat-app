@@ -8,6 +8,7 @@ import {
 } from '@chakra-ui/react';
 
 import { ModalDeleteMessage } from './ModalDeleteMessage';
+import { ModalEditMessage } from './ModalEditMessage';
 
 interface TextMessageProps {
   id: string;
@@ -40,9 +41,14 @@ export function TextMessage({
   });
 
   const modalDeleteDisclosure = useDisclosure();
+  const modalEditDisclosure = useDisclosure();
 
   function handleDeleteMessage() {
     modalDeleteDisclosure.onOpen();
+  }
+
+  function handleEditMessage() {
+    modalEditDisclosure.onOpen();
   }
 
   return (
@@ -86,6 +92,7 @@ export function TextMessage({
               color="white"
               size="sm"
               _hover={{ opacity: '0.5' }}
+              onClick={() => handleEditMessage()}
             />
             <IconButton
               aria-label="Delete Message"
@@ -103,6 +110,12 @@ export function TextMessage({
       <ModalDeleteMessage
         isOpen={modalDeleteDisclosure.isOpen}
         onClose={modalDeleteDisclosure.onClose}
+        messageId={id}
+      />
+      <ModalEditMessage
+        isOpen={modalEditDisclosure.isOpen}
+        onClose={modalEditDisclosure.onClose}
+        oldContent={content}
         messageId={id}
       />
     </Flex>

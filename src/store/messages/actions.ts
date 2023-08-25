@@ -6,6 +6,7 @@ import {
   onSnapshot,
   doc,
   deleteDoc,
+  updateDoc,
 } from 'firebase/firestore';
 
 import { MessagesStore as store } from '.';
@@ -29,6 +30,18 @@ onSnapshot(messagesCollectionRef, (snapshot) => {
     } else if (change.type === 'removed') {
       store.update((s) => {
         s.messages = s.messages.filter((m) => m.id !== change.doc.id);
+      });
+    } else if (change.type === 'modified') {
+      store.update((s) => {
+        s.messages = s.messages.map((m) => {
+          if (m.id === change.doc.id) {
+            return {
+              ...m,
+              ...change.doc.data(),
+            };
+          }
+          return m;
+        });
       });
     }
   });
@@ -58,6 +71,13 @@ export async function createImageMessage(
 export async function deleteMessage(messageId: string) {
   const docRef = doc(db, 'messages', messageId);
   await deleteDoc(docRef);
+}
+
+export async function updateMessage(messageId: string, newContent: string) {
+  const docRef = doc(db, 'messages', messageId);
+  await updateDoc(docRef, {
+    content: newContent,
+  });
 }
 
 export function clearStore() {
