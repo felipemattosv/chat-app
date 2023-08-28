@@ -1,15 +1,22 @@
-## React Template
+# Chat-app
+#### author: [@felipemattosv](https://github.com/felipemattosv)
+#### Link to chat: https://chat-app-one-olive.vercel.app/
 
-- NextJS
-- ChakraUI
-- ESlint
+## Description
+  This project consists of a `CRUD` with firebase, which has functionality for **C**reating, **R**eading, **U**pdating and **D**eleting messages, in addition to having `user authentication`. The chat is in real time, for that, the `firestore database listener` is used. Image storage is done in `firebase storage`.
 
-# Configuração inicial
+## Tecnology
+  - [React](https://react.dev/)
+  - [Next](https://nextjs.org/)
+  - [Typescript](https://www.typescriptlang.org/)
+  - [Firebase](https://firebase.google.com/?hl=en)
+  - [EsLint](https://eslint.org/)
+  - [Chakra-UI](https://chakra-ui.com/)
 
-## Yarn Classic (1.x)
-  Você deve primeiramente acessar o `cmd` do seu computador e digitar o seguinte comando `yarn set version stable` antes de abrir a sua IDE. Após realizar isso, você pode abrir sua IDE e dar o comando `yarn`normalmente.
-  
-## Yarn Stable
-  Se a versão do seu computador já está na estável mais recente, não é necessário fazer nada. Você não deve ter problemas em utilizar o `yarn`dentro da sua IDE.
+## About Google Firebase
+  Firebase is a comprehensive cloud-based app development platform, offering services such as data storage and user authentication. It follows `serverless` approaches in various services, allowing developers to focus on app logic while ensuring scalability and ease of use in building high-quality applications. This positions Firebase within the realm of `cloud computing`, particularly in the `Platform as a Service (PaaS)` model, by handling infrastructure management and providing hosted solutions.
 
-#### Made in 07/09/2022
+## Deploy
+  The Deploy was done in `vercel`: [Link to deploy](https://chat-app-one-olive.vercel.app/)
+
+  ![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=React&logoColor=white) ![Next](https://img.shields.io/badge/-Next.js-000000?style=flat-square&logo=Next.js&logoColor=white) ![Typescript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=TypeScript&logoColor=white) ![Firebase](https://img.shields.io/badge/-Firebase-FFCA28?style=flat-square&logo=Firebase&logoColor=black) ![EsLint](https://img.shields.io/badge/-ESLint-4B32C3?style=flat-square&logo=ESLint&logoColor=white) ![Chakra-UI](https://img.shields.io/badge/-Chakra%20UI-319795?style=flat-square&logo=Chakra%20UI&logoColor=white)
