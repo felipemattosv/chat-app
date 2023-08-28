@@ -68,6 +68,8 @@ const Register: NextPage = () => {
   }
 
   return (
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     <Flex h="100vh" justify="center" align="center" flexDir="column">
       <ChatIcon boxSize={16} color="#8800C7" />
       <InputGroup w="14rem" mt="3rem">

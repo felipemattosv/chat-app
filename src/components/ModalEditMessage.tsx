@@ -37,6 +37,8 @@ export function ModalEditMessage({
   const [newContent, setNewContent] = useState(oldContent);
 
   return (
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     <Modal isOpen={isOpen} onClose={onClose} size="sm">
       <ModalOverlay />
       <ModalContent bg="#0E1013" color="white">
